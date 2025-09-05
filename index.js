@@ -20,6 +20,10 @@ function showMessage() {
   const message = document.getElementById("hiddenMessage");
   message.classList.add("show");
   
+  // Play romantic song
+  const audio = document.getElementById("romantic-song");
+  audio.play().catch((error) => console.log("Audio play failed:", error));
+
   // Confetti Animation
   const confettiContainer = document.querySelector(".confetti");
   for (let i = 0; i < 50; i++) {
@@ -34,8 +38,14 @@ function showMessage() {
     confettiContainer.appendChild(confetti);
     setTimeout(() => confetti.remove(), 3000);
   }
+}
 
-  alert("Happy Birthday, my love! ❤️🎉");
+function closeModal() {
+  const message = document.getElementById("hiddenMessage");
+  message.classList.remove("show");
+  const audio = document.getElementById("romantic-song");
+  audio.pause();
+  audio.currentTime = 0;
 }
 
 // Video Carousel
